@@ -5,8 +5,8 @@ const grid = 32; // measures of the grid
 // array with sequence of shapes, at the start - empty
 var tetrominoSequence = [];
 
-// using two-dimensional array, we see what is happening in each grid of the field
-// field measures 10 to 20, a few more rows will be seen as well
+// using nested array, we see what is happening in each grid of the field
+// field measures 10 to 20
 
 var playfield = [];
 console.log(playfield)
@@ -108,7 +108,7 @@ function getNextTetromino() {
     }
     // get the first shape from the array
     const name = tetrominoSequence.pop();
-    // create a matrix that we draw the shape with
+    // create a matrix that we draw the shape with. The matrix is just an array in an array.
     const matrix = tetrominos[name];
 
     // I and O start from the middle, the others - close to the left side
@@ -149,7 +149,7 @@ function isValidMove(matrix, cellRow, cellCol) {
             }
         }
     }
-    return true;
+    return true; // in case no dsitraction in the shape continues to move down
 }
 // each shape is placed on its place
 function placeTetramino() {
@@ -270,11 +270,11 @@ function loop() {
     let speed = 35
         // we draw a current shape
     if (tetromino) {
-        // shape is moving down every 35
+        // shape is moving down every 35 frame. Frame is a snapshot of the position of that element in time on the screen
         if (++count > speed) {
             tetromino.row++;
             count = 0;
-            // if the movement is completed, we draw a shape in the filed and check whether we can clear the row
+            // if the movement is completed, we draw a shape in the field and check whether we can clear the row
             if (!isValidMove(tetromino.matrix, tetromino.row, tetromino.col)) {
                 tetromino.row--;
                 placeTetramino();
