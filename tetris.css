@@ -2,13 +2,15 @@ html,
 body {
     height: 100%;
     margin: 0;
-    background-image: url("https://www.comeaucomputing.com/wp-content/uploads/2019/07/tetris-effect-banner-1024x576.jpg")
+ 
+    
 }
 
 body {
     background: black;
     display: flex;
     align-items: center;
+    background: url(./images/Tetris+Effect+Banner.jpeg);
 }
 
 canvas {
